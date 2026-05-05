@@ -1,0 +1,16 @@
+from collections import deque
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dt={')':'(', '}':'{', ']':'['}
+        l=dt.keys()
+        m=deque()
+        for i in range(len(s)-1,-1,-1):
+            #print(m,i)
+            if s[i] in dt.keys():
+                m.append(s[i])
+            else:
+                k=m.pop()
+                #print(k,dt[k],s[i])
+                if dt[k]!=s[i]:
+                    return False
+        return True
